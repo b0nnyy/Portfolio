@@ -90,7 +90,7 @@
       border-color: #2f6fe2;
     }
 
-    /* Uniwersalny wrapper 16:9 */
+    /* Wrapper 16:9 (spójne miniatury) */
     .thumb-wrap{
       position:relative; width:100%;
       padding-top:56.25%;  /* 16:9 */
@@ -105,14 +105,15 @@
       animation:fadeIn .8s ease forwards;
     }
 
-    /* Level Diagram: zachowaj ostrość, nie skaluj na siłę */
+    /* Level Diagram: ostre krawędzie + brak rozciągania */
     .no-scale{
-      object-fit:contain !important;  /* bez rozciągania */
+      object-fit:contain !important;
       image-rendering: crisp-edges;
       image-rendering: -moz-crisp-edges;
       image-rendering: pixelated;
-      transform:none !important;      /* brak subpikselowej skali */
-      background:#0e141b;            /* wypełnienie pasków przy contain */
+      transform:none !important;
+      background:#0e141b;
+      cursor: zoom-in;            /* wskazówka że można powiększyć */
     }
 
     .card:nth-child(1) .thumb{animation-delay:.15s}
@@ -159,104 +160,24 @@
     @media (max-width: 420px){
       figcaption{ padding: 10px 12px 14px }
     }
-  </style>
-</head>
-<body>
-  <h1 class="section-title" style="margin-top:28px;">Dawid Karpiński</h1>
 
-  <div class="bio">
-    <p>
-      🎮 Cześć! Nazywam się <strong>Dawid Karpiński</strong> i studiuję projektowanie gier na WSB Merito.<br>
-      Tworzę poziomy, interfejsy i prototypy w <strong>Unreal Engine 5</strong> oraz modele 3D w <strong>Blenderze</strong>.<br>
-      Interesuje mnie Level Design, narracja środowiskowa i łączenie estetyki z gameplayem.<br>
-      Szukam możliwości rozwoju jako <strong>Junior Game Developer</strong> lub <strong>Level Designer</strong>.
-    </p>
-    <div class="tags">
-      <div class="tag">Unreal Engine 5</div><div class="tag">Blueprints</div>
-      <div class="tag">Level Design</div><div class="tag">UI / UX</div>
-      <div class="tag">Blender</div><div class="tag">Git / Perforce</div>
-    </div>
-  </div>
+    /* LIGHTBOX */
+    .lightbox{
+      position: fixed; inset:0;
+      display:none;
+      align-items:center; justify-content:center;
+      background: rgba(0,0,0,.65);
+      backdrop-filter: blur(2px);
+      z-index: 9999;
+      padding: 24px;
+      animation: lbFade .2s ease;
+    }
+    .lightbox[aria-hidden="false"]{ display:flex; }
+    @keyframes lbFade{ from{opacity:0} to{opacity:1} }
 
-  <!-- UE -->
-  <h2 class="section-title">Prace z Unreal Engine</h2>
-  <p class="section-desc">Wybrane materiały: szkic level diagramu, widok z góry oraz ujęcie boczne tego samego terenu w UE5.</p>
-
-  <div class="gallery">
-    <figure class="card">
-      <div class="thumb-wrap">
-        <!-- zachowanie ostrości + brak skalowania -->
-        <img class="thumb no-scale" loading="lazy"
-             src="Level_Diagram.png" alt="Level Diagram – schemat poziomu">
-      </div>
-      <figcaption>
-        <span class="title">Level Diagram</span>
-        <span class="subtitle">Schemat poziomu</span>
-      </figcaption>
-    </figure>
-
-    <figure class="card">
-      <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="Top_View.png" alt="Zrzut z góry – Unreal Engine 5">
-      </div>
-      <figcaption>
-        <span class="title">Top View</span>
-        <span class="subtitle">Zrzut z góry</span>
-      </figcaption>
-    </figure>
-
-    <figure class="card">
-      <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="View.png" alt="Spojrzenie od boku – Unreal Engine 5">
-      </div>
-      <figcaption>
-        <span class="title">Spojrzenie od boku</span>
-        <span class="subtitle">Ujęcie boczne</span>
-      </figcaption>
-    </figure>
-  </div>
-
-  <!-- Blender -->
-  <h2 class="section-title">Projekty z Blendera</h2>
-  <p class="section-desc">Modele i rendery: postać 3D przygotowana na zajęcia oraz postać grzyb stworzona w Blenderze.</p>
-
-  <div class="gallery">
-    <figure class="card">
-      <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="Postac.png" alt="Postać 3D – projekt z zajęć w Blenderze">
-      </div>
-      <figcaption>
-        <span class="title">Postać</span>
-        <span class="subtitle">Projekt na zajęcia</span>
-      </figcaption>
-    </figure>
-
-    <figure class="card">
-      <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="Grzyb.png" alt="Render postaci-grzyba w Blenderze">
-      </div>
-      <figcaption>
-        <span class="title">Postać grzyb</span>
-        <span class="subtitle">Projekt na zajęcia</span>
-      </figcaption>
-    </figure>
-  </div>
-
-  <!-- Social -->
-  <div class="socials">
-    <a class="btn btn--github" href="https://github.com/b0nnyy" target="_blank" rel="noopener" title="GitHub">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.49-1.1-1.49-.9-.63.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.33 1.1 2.9.84.09-.66.35-1.1.63-1.36-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.33.1-2.77 0 0 .85-.28 2.78 1.05a9.3 9.3 0 0 1 5.06 0c1.93-1.33 2.78-1.05 2.78-1.05.55 1.44.2 2.51.1 2.77.64.71 1.03 1.62 1.03 2.74 0 3.93-2.33 4.8-4.55 5.06.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.59.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-      GitHub
-    </a>
-
-    <a class="btn" href="https://www.linkedin.com/in/dkarpinski44" target="_blank" rel="noopener" title="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.1 2.5-2.48 2.5S0 4.88 0 3.5 1.1 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.06 0 4.8 2.67 4.8 6.14V23h-4v-7.08c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.73 1.84-2.73 3.75V23h-4V8z"/></svg>
-      LinkedIn
-    </a>
-  </div>
-</body>
-</html>
+    .lightbox__inner{
+      position: relative;
+      max-width: min(96vw, 1400px);
+      max-height: 90vh;
+      border-radius: 12px;
+      overflow: h
