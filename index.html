@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dawid Karpiński - Portfolio</title>
   <meta name="description" content="Portfolio Dawida Karpińskiego — projekty z Unreal Engine 5 i Blendera. Level Design, UI/UX, modele 3D.">
+
   <style>
     :root{
       --bg:#0f0f10;
@@ -43,7 +44,29 @@
       line-height: 1.5;
     }
 
-    /* Karty/galeria */
+    /* Bio i tagi */
+    .bio{
+      max-width: 900px;
+      margin: 28px auto 10px;
+      background: var(--panel);
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .tags{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:12px;
+    }
+    .tag{
+      background: #0af1;
+      color: var(--brand);
+      border: 1px solid #0af5;
+      border-radius: 18px;
+      padding: 6px 12px;
+      font-size:.9rem;
+    }
+
+    /* Galeria / karty */
     .gallery{
       display:flex;
       flex-wrap:wrap;
@@ -67,15 +90,19 @@
       border-color: #2f6fe2;
     }
 
-    /* Miniatury */
+    /* Uniwersalny wrapper 16:9 */
+    .thumb-wrap{
+      position:relative; width:100%;
+      padding-top:56.25%;  /* 16:9 */
+      overflow:hidden;
+      background:#0e141b;
+    }
     .thumb{
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      display:block;
-      opacity:0;
-      transform: scale(.985);
-      animation: fadeIn .8s ease forwards;
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      display:block; opacity:0; transform:scale(.985);
+      animation:fadeIn .8s ease forwards;
     }
     .card:nth-child(1) .thumb{animation-delay:.15s}
     .card:nth-child(2) .thumb{animation-delay:.30s}
@@ -84,10 +111,10 @@
     .card:nth-child(5) .thumb{animation-delay:.75s}
     .card:nth-child(6) .thumb{animation-delay:.90s}
 
-    @keyframes fadeIn{
-      from{opacity:0; transform: scale(.985)}
-      to{opacity:1; transform: scale(1)}
-    }
+    /* Przycięcie wizualne dla Level_Diagram (usuwa białe marginesy ze zdjęcia) */
+    .crop-tight{ clip-path: inset(4%); }
+
+    @keyframes fadeIn{ from{opacity:0; transform:scale(.985)} to{opacity:1; transform:scale(1)} }
 
     figcaption{
       padding: 10px 14px 14px;
@@ -106,28 +133,6 @@
       color:#c7d3e6cc;
     }
 
-    /* Bio i tagi */
-    .bio{
-      max-width: 900px;
-      margin: 28px auto 10px;
-      background: var(--panel);
-      padding: 24px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-    .tags{
-      display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:12px;
-    }
-    .tag{
-      background: #0af1;
-      color: var(--brand);
-      border: 1px solid #0af5;
-      border-radius: 18px;
-      padding: 6px 12px;
-      font-size:.9rem;
-    }
-
     /* Social buttons */
     .socials{
       display:flex; justify-content:center; gap:14px; margin: 28px 0 44px; flex-wrap:wrap;
@@ -143,9 +148,8 @@
     .btn--github:hover{ box-shadow:0 6px 18px rgba(160,160,160,.25) }
     .btn svg{ width:18px; height:18px }
 
-    @media (max-width: 420px){
-      figcaption{ padding: 10px 12px 14px }
-    }
+    /* Gdy obraz się nie wczyta – pokaż ramkę ostrzegawczą */
+    .img-error{ outline:2px solid #ff5a5a; outline-offset:-2px; }
   </style>
 </head>
 <body>
@@ -171,7 +175,10 @@
 
   <div class="gallery">
     <figure class="card">
-      <img class="thumb" src="Level_Diagram.png" alt="Level Diagram – schemat poziomu">
+      <div class="thumb-wrap">
+        <img class="thumb crop-tight" loading="lazy"
+             src="Level_Diagram.png" alt="Level Diagram – schemat poziomu">
+      </div>
       <figcaption>
         <span class="title">Level Diagram</span>
         <span class="subtitle">Schemat poziomu</span>
@@ -179,7 +186,10 @@
     </figure>
 
     <figure class="card">
-      <img class="thumb" src="Top_View.png" alt="Zrzut z góry – Unreal Engine 5">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="Top_View.png" alt="Zrzut z góry – Unreal Engine 5">
+      </div>
       <figcaption>
         <span class="title">Top View – UE5</span>
         <span class="subtitle">Zrzut z góry</span>
@@ -187,7 +197,10 @@
     </figure>
 
     <figure class="card">
-      <img class="thumb" src="View.png" alt="Spojrzenie od boku – Unreal Engine 5">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="View.png" alt="Spojrzenie od boku – Unreal Engine 5">
+      </div>
       <figcaption>
         <span class="title">Spojrzenie od boku</span>
         <span class="subtitle">Ujęcie boczne – UE5</span>
@@ -201,15 +214,21 @@
 
   <div class="gallery">
     <figure class="card">
-      <img class="thumb" src="Postac.png" alt="Postać 3D – projekt z zajęć w Blenderze">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="Postac.png" alt="Postać 3D – projekt z zajęć w Blenderze" id="img-postac">
+      </div>
       <figcaption>
-        <span class="title">Postac – Blender</span>
+        <span class="title">Postać – Blender</span>
         <span class="subtitle">Projekt na zajęcia</span>
       </figcaption>
     </figure>
 
     <figure class="card">
-      <img class="thumb" src="Grzyb.png" alt="Render postaci-grzyba w Blenderze">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="Grzyb.png" alt="Render postaci-grzyba w Blenderze">
+      </div>
       <figcaption>
         <span class="title">Postać-grzyb – Blender</span>
         <span class="subtitle">Render postaci</span>
@@ -229,5 +248,25 @@
       LinkedIn
     </a>
   </div>
+
+  <!-- Lekka diagnostyka obrazków: placeholder + info w konsoli -->
+  <script>
+    (function(){
+      const PLACEHOLDER = 'data:image/svg+xml;utf8,' +
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720">' +
+        '<rect width="100%" height="100%" fill="#11181f"/>' +
+        '<text x="50%" y="50%" fill="#b9c2d0" font-size="22" text-anchor="middle" dominant-baseline="middle">Obraz niedostępny</text>' +
+        '</svg>';
+
+      document.querySelectorAll('img.thumb').forEach(img => {
+        img.addEventListener('error', () => {
+          console.warn('Nie udało się wczytać obrazka:', img.getAttribute('src'));
+          img.src = PLACEHOLDER;
+          img.classList.add('img-error');
+          img.alt = (img.alt || 'Obraz') + ' (niedostępny)';
+        }, { once:true });
+      });
+    })();
+  </script>
 </body>
 </html>
