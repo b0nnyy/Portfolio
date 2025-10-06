@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dawid Karpiński - Portfolio</title>
-  <meta name="description" content="Portfolio Dawida Karpińskiego — projekty z Unreal Engine 5 i Blendera. Level Design, UI/UX, modele 3D.">
+  <title>Dawid Karpiński - Game Dev Portfolio</title>
+  <meta name="description" content="Portfolio of Dawid Karpiński — Unreal Engine 5 and Blender projects. Level Design, UI/UX, 3D Modeling.">
 
   <style>
     :root{
@@ -27,7 +27,6 @@
       overflow-x:hidden;
     }
 
-    /* Tytuły sekcji */
     .section-title{
       margin: 40px auto 6px;
       font-size: clamp(22px, 2.6vw, 30px);
@@ -44,7 +43,7 @@
       line-height: 1.5;
     }
 
-    /* Bio i tagi */
+    /* Bio */
     .bio{
       max-width: 900px;
       margin: 28px auto 10px;
@@ -66,7 +65,7 @@
       font-size:.9rem;
     }
 
-    /* Galeria / karty */
+    /* Gallery / cards */
     .gallery{
       display:flex;
       flex-wrap:wrap;
@@ -90,10 +89,10 @@
       border-color: #2f6fe2;
     }
 
-    /* Wrapper 16:9 (spójne miniatury) */
+    /* 16:9 wrapper for consistent thumbnails */
     .thumb-wrap{
       position:relative; width:100%;
-      padding-top:56.25%;  /* 16:9 */
+      padding-top:56.25%;
       overflow:hidden;
       background:#0e141b;
     }
@@ -105,7 +104,7 @@
       animation:fadeIn .8s ease forwards;
     }
 
-    /* Level Diagram: ostre krawędzie + brak rozciągania */
+    /* Level Diagram: sharp edges, no blur */
     .no-scale{
       object-fit:contain !important;
       image-rendering: crisp-edges;
@@ -113,7 +112,7 @@
       image-rendering: pixelated;
       transform:none !important;
       background:#0e141b;
-      cursor: zoom-in;            /* wskazówka że można powiększyć */
+      cursor: zoom-in;
     }
 
     .card:nth-child(1) .thumb{animation-delay:.15s}
@@ -157,11 +156,7 @@
     .btn--github:hover{ box-shadow:0 6px 18px rgba(160,160,160,.25) }
     .btn svg{ width:18px; height:18px }
 
-    @media (max-width: 420px){
-      figcaption{ padding: 10px 12px 14px }
-    }
-
-    /* LIGHTBOX */
+    /* Lightbox */
     .lightbox{
       position: fixed; inset:0;
       display:none;
@@ -180,4 +175,180 @@
       max-width: min(96vw, 1400px);
       max-height: 90vh;
       border-radius: 12px;
-      overflow: h
+      overflow: hidden;
+      background: #0b0f14;
+      border: 1px solid #243043;
+      box-shadow: 0 18px 50px rgba(0,0,0,.5);
+    }
+    .lightbox__img{
+      display:block;
+      max-width: 100%;
+      max-height: 90vh;
+      image-rendering: crisp-edges;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
+    }
+    .lightbox__caption{
+      color:#cbd6e6;
+      font-size: .95rem;
+      padding: 10px 14px 12px;
+      text-align: left;
+      border-top: 1px solid #243043;
+    }
+    .lightbox__close{
+      position:absolute; top:8px; right:8px;
+      background:#0e1622; color:#e6f0ff;
+      border:1px solid #2b405e; border-radius:8px;
+      padding:6px 10px; cursor:pointer;
+      font-weight:700;
+    }
+    .lightbox__close:hover{ background:#132034 }
+  </style>
+</head>
+<body>
+  <h1 class="section-title" style="margin-top:28px;">Dawid Karpiński</h1>
+
+  <div class="bio">
+    <p>
+      🎮 Hi! I'm <strong>Dawid Karpiński</strong>, a Game Design student at WSB Merito University (Poland).<br>
+      I create <strong>levels, UI systems and gameplay prototypes</strong> in <strong>Unreal Engine 5</strong>, and 3D models in <strong>Blender</strong>.<br>
+      I'm passionate about <strong>Level Design, environmental storytelling</strong> and combining aesthetics with gameplay.<br>
+      I'm looking for opportunities to grow as a <strong>Junior Game Developer</strong> or <strong>Level Designer</strong>.
+    </p>
+    <div class="tags">
+      <div class="tag">Unreal Engine 5</div><div class="tag">Blueprints</div>
+      <div class="tag">Level Design</div><div class="tag">UI / UMG</div>
+      <div class="tag">Blender</div><div class="tag">Git / LFS</div>
+    </div>
+  </div>
+
+  <!-- UE -->
+  <h2 class="section-title">Unreal Engine Projects</h2>
+  <p class="section-desc">Selected works: level diagram sketch, top-down view, and side perspective of the same terrain built in UE5.</p>
+
+  <div class="gallery">
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb no-scale js-zoom" loading="lazy"
+             src="Level_Diagram.png" alt="Level Diagram – layout sketch"
+             data-full="Level_Diagram.png" data-caption="Level Diagram — layout sketch (click anywhere to close)">
+      </div>
+      <figcaption>
+        <span class="title">Level Diagram</span>
+        <span class="subtitle">Layout sketch</span>
+      </figcaption>
+    </figure>
+
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="Top_View.png" alt="Top View – Unreal Engine 5">
+      </div>
+      <figcaption>
+        <span class="title">Top View – UE5</span>
+        <span class="subtitle">Top-down shot</span>
+      </figcaption>
+    </figure>
+
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="View.png" alt="Side View – Unreal Engine 5">
+      </div>
+      <figcaption>
+        <span class="title">Side View</span>
+        <span class="subtitle">Side perspective – UE5</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Blender -->
+  <h2 class="section-title">Blender Projects</h2>
+  <p class="section-desc">3D character created during university classes and a stylized mushroom character render made in Blender.</p>
+
+  <div class="gallery">
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="Postac.png" alt="3D Character – university project in Blender">
+      </div>
+      <figcaption>
+        <span class="title">3D Character – Blender</span>
+        <span class="subtitle">University project</span>
+      </figcaption>
+    </figure>
+
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="Grzyb.png" alt="Mushroom Character – Blender render">
+      </div>
+      <figcaption>
+        <span class="title">Mushroom Character – Blender</span>
+        <span class="subtitle">Stylized render</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Social -->
+  <div class="socials">
+    <a class="btn btn--github" href="https://github.com/b0nnyy" target="_blank" rel="noopener" title="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.49-1.1-1.49-.9-.63.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.33 1.1 2.9.84.09-.66.35-1.1.63-1.36-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.33.1-2.77 0 0 .85-.28 2.78 1.05a9.3 9.3 0 0 1 5.06 0c1.93-1.33 2.78-1.05 2.78-1.05.55 1.44.2 2.51.1 2.77.64.71 1.03 1.62 1.03 2.74 0 3.93-2.33 4.8-4.55 5.06.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.59.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+      GitHub
+    </a>
+
+    <a class="btn" href="https://www.linkedin.com/in/dkarpinski44" target="_blank" rel="noopener" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.1 2.5-2.48 2.5S0 4.88 0 3.5 1.1 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.06 0 4.8 2.67 4.8 6.14V23h-4v-7.08c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.73 1.84-2.73 3.75V23h-4V8z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Zoomed image">
+    <div class="lightbox__inner">
+      <button class="lightbox__close" id="lbClose" aria-label="Close">✕</button>
+      <img class="lightbox__img" id="lbImg" src="" alt="" />
+      <div class="lightbox__caption" id="lbCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbCaption = document.getElementById('lbCaption');
+      const lbClose = document.getElementById('lbClose');
+
+      function openLB(src, caption, alt){
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lbCaption.textContent = caption || '';
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLB(){
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        lbCaption.textContent = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.js-zoom').forEach(img=>{
+        img.addEventListener('click', ()=>{
+          const src = img.getAttribute('data-full') || img.src;
+          const cap = img.getAttribute('data-caption') || img.alt || '';
+          openLB(src, cap, img.alt);
+        });
+      });
+
+      lb.addEventListener('click', (e)=>{
+        const inner = e.target.closest('.lightbox__inner');
+        if(!inner || e.target === lb) closeLB();
+      });
+      lbClose.addEventListener('click', closeLB);
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLB(); });
+    })();
+  </script>
+</body>
+</html>
+
