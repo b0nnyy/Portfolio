@@ -104,15 +104,23 @@
       display:block; opacity:0; transform:scale(.985);
       animation:fadeIn .8s ease forwards;
     }
+
+    /* Level Diagram: zachowaj ostrość, nie skaluj na siłę */
+    .no-scale{
+      object-fit:contain !important;  /* bez rozciągania */
+      image-rendering: crisp-edges;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
+      transform:none !important;      /* brak subpikselowej skali */
+      background:#0e141b;            /* wypełnienie pasków przy contain */
+    }
+
     .card:nth-child(1) .thumb{animation-delay:.15s}
     .card:nth-child(2) .thumb{animation-delay:.30s}
     .card:nth-child(3) .thumb{animation-delay:.45s}
     .card:nth-child(4) .thumb{animation-delay:.60s}
     .card:nth-child(5) .thumb{animation-delay:.75s}
     .card:nth-child(6) .thumb{animation-delay:.90s}
-
-    /* Przycięcie wizualne dla Level_Diagram (usuwa białe marginesy ze zdjęcia) */
-    .crop-tight{ clip-path: inset(4%); }
 
     @keyframes fadeIn{ from{opacity:0; transform:scale(.985)} to{opacity:1; transform:scale(1)} }
 
@@ -148,8 +156,9 @@
     .btn--github:hover{ box-shadow:0 6px 18px rgba(160,160,160,.25) }
     .btn svg{ width:18px; height:18px }
 
-    /* Gdy obraz się nie wczyta – pokaż ramkę ostrzegawczą */
-    .img-error{ outline:2px solid #ff5a5a; outline-offset:-2px; }
+    @media (max-width: 420px){
+      figcaption{ padding: 10px 12px 14px }
+    }
   </style>
 </head>
 <body>
@@ -164,8 +173,8 @@
     </p>
     <div class="tags">
       <div class="tag">Unreal Engine 5</div><div class="tag">Blueprints</div>
-      <div class="tag">Level Design</div><div class="tag">UI / UMG</div>
-      <div class="tag">Blender</div><div class="tag">Git / LFS</div>
+      <div class="tag">Level Design</div><div class="tag">UI / UX</div>
+      <div class="tag">Blender</div><div class="tag">Git / Perforce</div>
     </div>
   </div>
 
@@ -176,7 +185,8 @@
   <div class="gallery">
     <figure class="card">
       <div class="thumb-wrap">
-        <img class="thumb crop-tight" loading="lazy"
+        <!-- zachowanie ostrości + brak skalowania -->
+        <img class="thumb no-scale" loading="lazy"
              src="Level_Diagram.png" alt="Level Diagram – schemat poziomu">
       </div>
       <figcaption>
@@ -191,7 +201,7 @@
              src="Top_View.png" alt="Zrzut z góry – Unreal Engine 5">
       </div>
       <figcaption>
-        <span class="title">Top View – UE5</span>
+        <span class="title">Top View</span>
         <span class="subtitle">Zrzut z góry</span>
       </figcaption>
     </figure>
@@ -203,23 +213,23 @@
       </div>
       <figcaption>
         <span class="title">Spojrzenie od boku</span>
-        <span class="subtitle">Ujęcie boczne – UE5</span>
+        <span class="subtitle">Ujęcie boczne</span>
       </figcaption>
     </figure>
   </div>
 
   <!-- Blender -->
   <h2 class="section-title">Projekty z Blendera</h2>
-  <p class="section-desc">Modele i rendery: postać 3D przygotowana na zajęcia oraz postać-grzyb stworzona w Blenderze.</p>
+  <p class="section-desc">Modele i rendery: postać 3D przygotowana na zajęcia oraz postać grzyb stworzona w Blenderze.</p>
 
   <div class="gallery">
     <figure class="card">
       <div class="thumb-wrap">
         <img class="thumb" loading="lazy"
-             src="Postac.png" alt="Postać 3D – projekt z zajęć w Blenderze" id="img-postac">
+             src="Postac.png" alt="Postać 3D – projekt z zajęć w Blenderze">
       </div>
       <figcaption>
-        <span class="title">Postać – Blender</span>
+        <span class="title">Postać</span>
         <span class="subtitle">Projekt na zajęcia</span>
       </figcaption>
     </figure>
@@ -230,8 +240,8 @@
              src="Grzyb.png" alt="Render postaci-grzyba w Blenderze">
       </div>
       <figcaption>
-        <span class="title">Postać-grzyb – Blender</span>
-        <span class="subtitle">Render postaci</span>
+        <span class="title">Postać grzyb</span>
+        <span class="subtitle">Projekt na zajęcia</span>
       </figcaption>
     </figure>
   </div>
@@ -248,25 +258,5 @@
       LinkedIn
     </a>
   </div>
-
-  <!-- Lekka diagnostyka obrazków: placeholder + info w konsoli -->
-  <script>
-    (function(){
-      const PLACEHOLDER = 'data:image/svg+xml;utf8,' +
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720">' +
-        '<rect width="100%" height="100%" fill="#11181f"/>' +
-        '<text x="50%" y="50%" fill="#b9c2d0" font-size="22" text-anchor="middle" dominant-baseline="middle">Obraz niedostępny</text>' +
-        '</svg>';
-
-      document.querySelectorAll('img.thumb').forEach(img => {
-        img.addEventListener('error', () => {
-          console.warn('Nie udało się wczytać obrazka:', img.getAttribute('src'));
-          img.src = PLACEHOLDER;
-          img.classList.add('img-error');
-          img.alt = (img.alt || 'Obraz') + ' (niedostępny)';
-        }, { once:true });
-      });
-    })();
-  </script>
 </body>
 </html>
