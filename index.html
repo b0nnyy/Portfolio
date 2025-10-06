@@ -4,99 +4,197 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dawid Karpiński - Portfolio</title>
+  <meta name="description" content="Portfolio Dawida Karpińskiego — projekty z Unreal Engine 5 i Blendera. Level Design, UI/UX, modele 3D.">
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      text-align: center; 
-      background: #111; 
-      color: #eee; 
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111;
+      color: #eee;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
 
-    h1 { 
-      margin-top: 30px; 
-      font-size: 2em;
+    h1 { margin-top: 30px; font-size: 2em; }
+    h2 { margin-top: 50px; font-size: 1.5em; color: #0af; }
+    p  { color: #ccc; line-height: 1.6; }
+
+    .bio {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #222;
     }
 
-    h2 {
-      margin-top: 50px;
-      font-size: 1.5em;
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      background: #0af2;
       color: #0af;
+      border: 1px solid #0af5;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9em;
+      transition: background 0.3s ease;
+    }
+    .tag:hover { background: #0af3; }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
     }
 
-    p { color: #ccc; }
+    figure { margin: 10px; }
+    figcaption { margin-top: 8px; font-size: 0.95em; color: #bbb; }
 
-    .gallery { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
-      margin-top: 20px; 
-    }
-
-    img { 
-      width: 300px; 
-      margin: 10px; 
-      border-radius: 10px; 
-      box-shadow: 0 0 10px #444; 
+    /* Obrazy + animacja wejścia */
+    .gallery img {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #444;
       opacity: 0;
       transform: scale(0.95);
       animation: fadeInZoom 0.8s ease forwards;
       transition: transform 0.3s ease;
+      display: block;
     }
 
-    /* Większe obrazy Blendera */
+    /* Większe obrazy w sekcji Blender */
     .blender img {
       width: 375px;
       box-shadow: 0 0 15px #555;
     }
 
-    /* Opóźnienie animacji */
-    img:nth-child(1) { animation-delay: 0.2s; }
-    img:nth-child(2) { animation-delay: 0.4s; }
-    img:nth-child(3) { animation-delay: 0.6s; }
-    img:nth-child(4) { animation-delay: 0.8s; }
-    img:nth-child(5) { animation-delay: 1.0s; }
+    /* Stagger animacji */
+    .gallery figure:nth-child(1) img { animation-delay: 0.2s; }
+    .gallery figure:nth-child(2) img { animation-delay: 0.4s; }
+    .gallery figure:nth-child(3) img { animation-delay: 0.6s; }
+    .gallery figure:nth-child(4) img { animation-delay: 0.8s; }
+    .gallery figure:nth-child(5) img { animation-delay: 1.0s; }
+    .gallery figure:nth-child(6) img { animation-delay: 1.2s; }
 
     @keyframes fadeInZoom {
       from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      to   { opacity: 1; transform: scale(1); }
     }
+    .gallery img:hover { transform: scale(1.05); }
 
-    img:hover {
-      transform: scale(1.05);
+    /* Przyciski social */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 40px 0 50px;
+      flex-wrap: wrap;
     }
-
-    a {
-      color: #0af;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid #1f6fe1;
+      background: #0a0f1a;
+      color: #e6f0ff;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 0 0 rgba(31,111,225,0);
     }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(31,111,225,0.25);
+      background: #0d1320;
+      text-decoration: none;
+    }
+    .btn svg { width: 18px; height: 18px; display: block; }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    .btn--github { border-color: #666; }
+    .btn--github:hover { box-shadow: 0 6px 18px rgba(160,160,160,0.25); }
+
+    a { color: #0af; text-decoration: none; font-weight: bold; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <h1>Portfolio Dawid Karpiński</h1>
+
+  <div class="bio">
+    <p>
+      🎮 Cześć! Nazywam się <strong>Dawid Karpiński</strong> i studiuję projektowanie gier na WSB Merito.<br>
+      Tworzę poziomy, interfejsy i prototypy w <strong>Unreal Engine 5</strong> oraz modele 3D w <strong>Blenderze</strong>.<br>
+      Interesuje mnie Level Design, narracja środowiskowa i łączenie estetyki z gameplayem.<br>
+      Szukam możliwości rozwoju jako <strong>Junior Game Developer</strong> lub <strong>Level Designer</strong>.
+    </p>
+
+    <div class="tags">
+      <div class="tag">Unreal Engine 5</div>
+      <div class="tag">Blueprints</div>
+      <div class="tag">Level Design</div>
+      <div class="tag">UI / UX</div>
+      <div class="tag">Blender</div>
+      <div class="tag">Git / Git LFS</div>
+    </div>
+  </div>
+
   <p>Wybrane prace z Unreal Engine i Unity</p>
 
   <div class="gallery">
-    <img src="Level_Diagram.png" alt="Projekt 1">
-    <img src="Top_View.png" alt="Projekt 2">
-    <img src="View.png" alt="Projekt 3">
+    <figure>
+      <img src="Level_Diagram.png" alt="Level Diagram – schemat poziomu">
+      <figcaption>Level Diagram</figcaption>
+    </figure>
+    <figure>
+      <img src="Top_View.png" alt="Widok z góry – Unreal Engine 5">
+      <figcaption>Top View – UE5</figcaption>
+    </figure>
+    <figure>
+      <img src="View.png" alt="Ujęcie boczne poziomu">
+      <figcaption>Spojrzenie od boku</figcaption>
+    </figure>
   </div>
 
   <h2>Projekty z Blendera</h2>
   <div class="gallery blender">
-    <img src="Postac.png" alt="Render Blender 1">
-    <img src="Grzyb.png" alt="Render Blender 2">
+    <figure>
+      <img src="Grzyb.png" alt="Postać w Blenderze – projekt na zajęcia">
+      <figcaption>Postać – Blender</figcaption>
+    </figure>
+    <figure>
+      <img src="Blender_Render2.png" alt="Render w Blenderze">
+      <figcaption>Postać – Blender</figcaption>
+    </figure>
   </div>
 
-  <p style="margin-top: 40px;">
-    <a href="https://github.com/b0nnyy" target="_blank">Mój GitHub</a>
-  </p>
+  <!-- Przyciski: GitHub + LinkedIn -->
+  <div class="socials">
+    <a class="btn btn--github" href="https://github.com/b0nnyy" target="_blank" rel="noopener noreferrer" aria-label="Otwórz GitHub Dawida" title="GitHub">
+      <!-- GitHub SVG -->
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.1-1.49-1.1-1.49-.9-.63.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.33 1.1 2.9.84.09-.66.35-1.1.63-1.36-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.33.1-2.77 0 0 .85-.28 2.78 1.05a9.3 9.3 0 0 1 5.06 0c1.93-1.33 2.78-1.05 2.78-1.05.55 1.44.2 2.51.1 2.77.64.71 1.03 1.62 1.03 2.74 0 3.93-2.33 4.8-4.55 5.06.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.59.69.49A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+      </svg>
+      GitHub
+    </a>
+
+    <a class="btn" href="https://www.linkedin.com/in/dkarpinski44" target="_blank" rel="noopener noreferrer" aria-label="Otwórz LinkedIn Dawida" title="LinkedIn">
+      <!-- LinkedIn SVG -->
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4.98 3.5c0 1.38-1.1 2.5-2.48 2.5S0 4.88 0 3.5 1.1 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.85-2.05 3.8-2.05 4.06 0 4.8 2.67 4.8 6.14V23h-4v-7.08c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.73 1.84-2.73 3.75V23h-4V8z"/>
+      </svg>
+      LinkedIn
+    </a>
+  </div>
 </body>
 </html>
