@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,38 +90,26 @@
       border-color: #2f6fe2;
     }
 
-    /* 16:9 wrapper for consistent thumbnails */
+    /* Thumbnail */
     .thumb-wrap{
-      position:relative; width:100%;
-      padding-top:56.25%;
+      position:relative;
+      width:100%;
+      padding-top:56.25%; /* 16:9 ratio */
       overflow:hidden;
       background:#0e141b;
     }
     .thumb{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover; object-position:center;
-      display:block; opacity:0; transform:scale(.985);
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      opacity:0;
+      transform:scale(.985);
       animation:fadeIn .8s ease forwards;
-    }
-
-    /* Level Diagram: sharp edges, no blur */
-    .no-scale{
-      object-fit:contain !important;
-      image-rendering: crisp-edges;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: pixelated;
-      transform:none !important;
-      background:#0e141b;
       cursor: zoom-in;
     }
-
-    .card:nth-child(1) .thumb{animation-delay:.15s}
-    .card:nth-child(2) .thumb{animation-delay:.30s}
-    .card:nth-child(3) .thumb{animation-delay:.45s}
-    .card:nth-child(4) .thumb{animation-delay:.60s}
-    .card:nth-child(5) .thumb{animation-delay:.75s}
-    .card:nth-child(6) .thumb{animation-delay:.90s}
 
     @keyframes fadeIn{ from{opacity:0; transform:scale(.985)} to{opacity:1; transform:scale(1)} }
 
@@ -143,12 +132,23 @@
 
     /* Social buttons */
     .socials{
-      display:flex; justify-content:center; gap:14px; margin: 28px 0 44px; flex-wrap:wrap;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin: 28px 0 44px;
+      flex-wrap:wrap;
     }
     .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 16px; border-radius:10px; border:1px solid #1f6fe1;
-      background:#0a0f1a; color:#e6f0ff; text-decoration:none; font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:10px;
+      border:1px solid #1f6fe1;
+      background:#0a0f1a;
+      color:#e6f0ff;
+      text-decoration:none;
+      font-weight:600;
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
     }
     .btn:hover{ transform: translateY(-1px); box-shadow:0 6px 18px rgba(31,111,225,.25); background:#0d1320;}
@@ -158,11 +158,13 @@
 
     /* Lightbox */
     .lightbox{
-      position: fixed; inset:0;
+      position: fixed;
+      inset:0;
       display:none;
-      align-items:center; justify-content:center;
-      background: rgba(0,0,0,.65);
-      backdrop-filter: blur(2px);
+      align-items:center;
+      justify-content:center;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(3px);
       z-index: 9999;
       padding: 24px;
       animation: lbFade .2s ease;
@@ -184,9 +186,7 @@
       display:block;
       max-width: 100%;
       max-height: 90vh;
-      image-rendering: crisp-edges;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: pixelated;
+      image-rendering: auto;
     }
     .lightbox__caption{
       color:#cbd6e6;
@@ -196,10 +196,15 @@
       border-top: 1px solid #243043;
     }
     .lightbox__close{
-      position:absolute; top:8px; right:8px;
-      background:#0e1622; color:#e6f0ff;
-      border:1px solid #2b405e; border-radius:8px;
-      padding:6px 10px; cursor:pointer;
+      position:absolute;
+      top:8px;
+      right:8px;
+      background:#0e1622;
+      color:#e6f0ff;
+      border:1px solid #2b405e;
+      border-radius:8px;
+      padding:6px 10px;
+      cursor:pointer;
       font-weight:700;
     }
     .lightbox__close:hover{ background:#132034 }
@@ -222,16 +227,15 @@
     </div>
   </div>
 
-  <!-- UE -->
+  <!-- Unreal Engine -->
   <h2 class="section-title">Unreal Engine Projects</h2>
   <p class="section-desc">Selected works: level diagram sketch, top-down view, and side perspective of the same terrain built in UE5.</p>
 
   <div class="gallery">
     <figure class="card">
       <div class="thumb-wrap">
-        <img class="thumb no-scale js-zoom" loading="lazy"
-             src="Level_Diagram.png" alt="Level Diagram – layout sketch"
-             data-full="Level_Diagram.png" data-caption="Level Diagram — layout sketch (click anywhere to close)">
+        <img class="thumb js-zoom" loading="lazy"
+             src="Level_Diagram.png" alt="Level Diagram — layout sketch">
       </div>
       <figcaption>
         <span class="title">Level Diagram</span>
@@ -241,8 +245,8 @@
 
     <figure class="card">
       <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="Top_View.png" alt="Top View – Unreal Engine 5">
+        <img class="thumb js-zoom" loading="lazy"
+             src="Top_View.png" alt="Top View — Unreal Engine 5">
       </div>
       <figcaption>
         <span class="title">Top View</span>
@@ -252,8 +256,8 @@
 
     <figure class="card">
       <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="View.png" alt="Side View – Unreal Engine 5">
+        <img class="thumb js-zoom" loading="lazy"
+             src="View.png" alt="Side View — Unreal Engine 5">
       </div>
       <figcaption>
         <span class="title">Side View</span>
@@ -269,8 +273,8 @@
   <div class="gallery">
     <figure class="card">
       <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="Postac.png" alt="3D Character – university project in Blender">
+        <img class="thumb js-zoom" loading="lazy"
+             src="Postac.png" alt="3D Character — university project in Blender">
       </div>
       <figcaption>
         <span class="title">3D Character</span>
@@ -280,12 +284,12 @@
 
     <figure class="card">
       <div class="thumb-wrap">
-        <img class="thumb" loading="lazy"
-             src="Grzyb.png" alt="Mushroom Character – Blender render">
+        <img class="thumb js-zoom" loading="lazy"
+             src="Grzyb.png" alt="Mushroom Character — Blender render">
       </div>
       <figcaption>
         <span class="title">Mushroom Character</span>
-        <span class="subtitle">University project</span>
+        <span class="subtitle">Stylized render</span>
       </figcaption>
     </figure>
   </div>
@@ -322,7 +326,7 @@
       function openLB(src, caption, alt){
         lbImg.src = src;
         lbImg.alt = alt || '';
-        lbCaption.textContent = caption || '';
+        lbCaption.textContent = caption || alt || '';
         lb.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       }
@@ -333,11 +337,10 @@
         document.body.style.overflow = '';
       }
 
+      // ✅ now all .js-zoom images are clickable
       document.querySelectorAll('.js-zoom').forEach(img=>{
         img.addEventListener('click', ()=>{
-          const src = img.getAttribute('data-full') || img.src;
-          const cap = img.getAttribute('data-caption') || img.alt || '';
-          openLB(src, cap, img.alt);
+          openLB(img.src, img.alt, img.alt);
         });
       });
 
@@ -351,4 +354,3 @@
   </script>
 </body>
 </html>
-
