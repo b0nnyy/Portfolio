@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -229,7 +228,7 @@
 
   <!-- Unreal Engine -->
   <h2 class="section-title">Unreal Engine Projects</h2>
-  <p class="section-desc">Selected works: level diagram sketch, top-down view, and side perspective of the same terrain built in UE5.</p>
+  <p class="section-desc">Selected works: level diagram sketch, top-down view, annotated layout, and additional in-engine shots (lightbox enabled).</p>
 
   <div class="gallery">
     <figure class="card">
@@ -257,11 +256,45 @@
     <figure class="card">
       <div class="thumb-wrap">
         <img class="thumb js-zoom" loading="lazy"
-             src="Annotated Map.png" alt="Side View — Unreal Engine 5">
+             src="Annotated Map.png" alt="Annotated Map — labeled layout">
       </div>
       <figcaption>
         <span class="title">Annotated Map</span>
-        <span class="subtitle">Side perspective</span>
+        <span class="subtitle">Labeled layout</span>
+      </figcaption>
+    </figure>
+
+    <!-- NEW: Extra UE5 shots -->
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb js-zoom" loading="lazy"
+             src="castle.png" alt="Castle Vista — UE5 in-engine shot">
+      </div>
+      <figcaption>
+        <span class="title">Castle Vista</span>
+        <span class="subtitle">UE5 in-engine shot</span>
+      </figcaption>
+    </figure>
+
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb js-zoom" loading="lazy"
+             src="LakeHouse.png" alt="Lake House — UE5 in-engine shot">
+      </div>
+      <figcaption>
+        <span class="title">Lake House</span>
+        <span class="subtitle">UE5 in-engine shot</span>
+      </figcaption>
+    </figure>
+
+    <figure class="card">
+      <div class="thumb-wrap">
+        <img class="thumb js-zoom" loading="lazy"
+             src="Panorama.png" alt="Panorama View — UE5 in-engine shot">
+      </div>
+      <figcaption>
+        <span class="title">Panorama View</span>
+        <span class="subtitle">UE5 in-engine shot</span>
       </figcaption>
     </figure>
   </div>
@@ -337,7 +370,7 @@
         document.body.style.overflow = '';
       }
 
-      // ✅ now all .js-zoom images are clickable
+      // all .js-zoom images are clickable
       document.querySelectorAll('.js-zoom').forEach(img=>{
         img.addEventListener('click', ()=>{
           openLB(img.src, img.alt, img.alt);
