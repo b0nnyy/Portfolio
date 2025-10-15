@@ -1,4 +1,4 @@
-![Portfolio Preview](preview.png)
+
 
 # 🎮 Dawid Karpiński — Game Developer Portfolio  
 
