@@ -48,7 +48,7 @@ A peaceful farming sim inspired by *Stardew Valley* — my ongoing large-scale w
 ## 📬 Contact  
 
 📧 **d.karpinski3009@gmail.com**  
-🌐 [LinkedIn](www.linkedin.com/in/dkarpinski44)
+[LinkedIn](https://www.linkedin.com/in/dkarpinski44)
 
 ---
 
